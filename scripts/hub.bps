@@ -37,6 +37,8 @@ def ticking hubmain(){
 	}
 	if (block(4 61 1004 minecraft:stone_button[face=wall,facing=north,powered=true])){
 		/setblock 4 61 1004 minecraft:stone_button[face=wall,facing=north,powered=false]
+		tellraw(@a,("Source Code:"))
+		tellraw(@a,("   https://github.com/TheblueMan003/Terracraft","https://github.com/TheblueMan003/Terracraft"))
 		tellraw(@a,("Some of My Other Maps:",yellow))
 		tellraw(@a,("   Super Steve Bros",aqua,"https://www.planetminecraft.com/project/super-steve-bros-4833363/"))
 		tellraw(@a,("   Rewind Time",aqua,"https://www.planetminecraft.com/project/rewind-time/"))
