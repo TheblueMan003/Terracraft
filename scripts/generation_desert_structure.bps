@@ -1,0 +1,32 @@
+package generation
+
+def desertStruct(){
+	int rng = Random.Range(0,200)
+	if (rng == 0){
+		positioned(~ ~-11 ~){
+			structure("desert_temple")
+			fill(~ ~ ~1 ~24 ~21 ~1 structure_void keep)
+		}
+	}
+}
+
+def snowStruct(){
+	int rng = Random.Range(0,200)
+	if (rng == 0){
+		positioned(~ ~-10 ~){
+			structure("igloo")
+			fill(~ ~ ~1 ~8 ~15 ~1 structure_void keep)
+		}
+	}
+}
+
+
+def plainStruct(){
+	int rng = Random.Range(0,200)
+	if (rng == 0){
+		positioned(~ ~-1 ~){
+			structure("villager_house_1")
+			fill(~ ~ ~1 ~10 ~7 ~1 structure_void keep)
+		}
+	}
+}

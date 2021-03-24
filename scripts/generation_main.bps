@@ -1,0 +1,63 @@
+package generation
+bool started
+bool needOverworldLeft = false
+bool needOverworldRight = false
+bool needNetherLeft = false
+bool needNetherRight = false
+bool needEndLeft = false
+bool needEndRight = false
+int genDelay
+
+def main(){
+	if (started){
+		needOverworldLeft = false
+		needOverworldRight = false
+		needNetherLeft = false
+		needNetherRight = false
+		needEndLeft = false
+		needEndRight = false
+		genDelay++
+		with(@a){
+			int x = @s.x
+			int z = @s.z
+			if (z > -2500 && z < -1500){
+				x -= 50
+				if (x < overworld_left.x){needOverworldLeft = true}
+				x = @s.x
+				x += 50
+				if (x > overworld_right.x){needOverworldRight = true}
+			}
+			if (z > -1500 && z < -500){
+				x -= 50
+				if (x < nether_left.x){needNetherLeft = true}
+				x = @s.x
+				x += 50
+				if (x > nether_right.x){needNetherRight = true}
+			}
+			if (z > -500 && z < 500){
+				x -= 50
+				if (x < end_left.x){needEndLeft = true}
+				x = @s.x
+				x += 50
+				if (x > end_right.x){needEndRight = true}
+			}
+		}
+	}
+	if (genDelay > 0){
+		if (needOverworldLeft)
+			overworld_generate_left()
+		if (needOverworldRight)
+			overworld_generate_right()
+		
+		if (needNetherLeft)
+			nether_generate_left()
+		if (needNetherRight)
+			nether_generate_right()
+		
+		if (needEndLeft)
+			end_generate_left()
+		if (needEndRight)
+			end_generate_right()
+		genDelay = 0
+	}
+}

@@ -1,0 +1,71 @@
+package mob
+
+enum __mobSpawnLst = zombie, skeleton, spider, enderman, creeper
+
+def spawnNether(){
+	if (block(~ 0 -1002 white_stained_glass)){
+		int rand = Random.Range(0,4)
+		switch(rand){
+			0 -> /summon piglin ~ ~ ~ {HandItems: [{id: "minecraft:crossbow", Count: 1b, tag: {Damage: 0}},{}],IsImmuneToZombification:1,Tags:["tagged"]}
+			1 -> /summon hoglin ~ ~ -1000.0 {IsImmuneToZombification:1,Tags:["tagged"]}
+			2 -> /summon zombified_piglin ~ ~ ~ {HandItems: [{id: "minecraft:golden_sword", Count: 1b, tag: {Damage: 0}}, {}],Tags:["tagged"]}
+			3 -> /summon piglin ~ ~ ~ {HandItems: [{id: "minecraft:crossbow", Count: 1b, tag: {Damage: 0}}, {}],Tags:["tagged"]}
+		}
+	}
+	if (block(~ 0 -1002 red_stained_glass)){
+		 /summon enderman ~ ~ ~ {Tags:["tagged"]}
+	}
+	if (block(~ 0 -1002 orange_stained_glass)){
+		/summon skeleton ~ ~ ~ {HandItems: [{id: "minecraft:bow", Count: 1b, tag: {Damage: 0}}, {}],Tags:["tagged"]}
+	}
+	if (block(~ 0 -1002 yellow_stained_glass)){
+		/summon magma_cube ~ ~ -1000.0 {Tags:["tagged"]}
+	}
+	/tp @s ~ -100 ~
+}
+def spawnEnd(){
+	/summon enderman ~ ~ ~ {Tags:["tagged"]}
+	/tp @s ~ -100 ~
+}
+
+def spawnManager(){
+	tag(@s,tagged)
+	int z = @s.z
+	if (z > -1500 && z < -500){
+		spawnNether()
+	}
+	if (z > -500 && z < 500){
+		spawnEnd()
+	}
+}
+
+def mobControll(){
+	forgenerate($mob,__mobSpawnLst){
+		with(@e[type=$mob,tag=!tagged],true){
+			spawnManager()
+		}
+	}
+}
+INT MobSpawnDelay
+enum spawnerType = blaze, zombie, skeleton, silverfish
+def mobSpawner(){
+	forgenerate($mob,spawnerType){
+		with(@e[tag=spw_$mob],true){
+			MobSpawnDelay ++
+			if (MobSpawnDelay > 300){
+				MobSpawnDelay = Random.Range(-100,0)
+				if (@a[distance=..10] && !@e[type=$mob,distance=..10]){
+					int nb = Random.Range(2,5)
+					for(int i = 0;i<nb,i++){
+						/summon $mob ~ ~ ~ {Tags:["tagged","spw_init"]}	
+						with(@e[tag=spw_init]){
+							int x = 	@s.x + Random.Range(-2,3)
+							@s.x = x
+							untag(spw_init)
+						}
+					}
+				}
+			}
+		}
+	}
+}

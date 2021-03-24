@@ -1,0 +1,59 @@
+package generation
+
+enum GenType = Overworld, Nether, End
+
+def lazy genBase(int y, int y2, GenType gen = Overworld){
+	/fill ~ 0 ~ ~ 255 ~-1 air keep
+	if(gen == Nether || gen == Overworld){
+		for(int i = 0;i < y;i++){
+			@s.y = i
+			at(@s){
+				switch(gen){
+					Overworld -> fill(~ ~ ~ ~ ~ ~-1 stone replace #empty)
+					Nether -> fill(~ ~ ~ ~ ~ ~-1 netherrack replace #empty)
+				}
+			}
+		}
+	}
+	if(gen == End){
+		for(int i = y2;i < y;i++){
+			@s.y = i
+			at(@s)
+				fill(~ ~ ~ ~ ~ ~-1 end_stone replace #empty)
+		}
+	}
+	if(gen == Nether){
+		for(int i = y2;i < 127;i++){
+			@s.y = i
+			at(@s)
+				fill(~ ~ ~ ~ ~ ~-1 netherrack replace #empty)
+		}
+	}
+	if(barrier){
+		fill(~ 0 ~-2 ~ 255 ~-2 barrier)
+		fill(~ 0 ~1 ~ 255 ~1 barrier)
+	}
+	if (gen == Overworld){
+		for(int i = y;i < sea_level;i++){
+			@s.y = i
+			at(@s)
+				//fill(~-1 ~ ~ ~ ~1 ~-1 barrier keep)
+				fill(~ ~ ~ ~ ~ ~-1 water replace #empty)
+		}
+		at(@s)
+			fill(~ 0 ~ ~ 0 ~-1 bedrock)
+	}
+	if (gen == Nether){
+		for(int i = y;i < sea_level;i++){
+			@s.y = i
+			at(@s)
+				//fill(~-1 ~ ~ ~ ~1 ~-1 air replace barrier)
+				//fill(~-1 ~ ~ ~ ~1 ~-1 barrier keep)
+				fill(~ ~ ~ ~ ~ ~-1 lava replace #empty)
+		}
+		at(@s){
+			fill(~ 0 ~ ~ 0 ~-1 bedrock)
+			fill(~ 127 ~ ~ 127 ~-1 bedrock)
+		}
+	}
+}

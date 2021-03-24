@@ -1,0 +1,10 @@
+package generation
+
+def netherStruct(){
+	int rng = Random.Range(0,200)
+	if (rng == 0){
+		positioned(~ ~-3 ~){
+			structure("nether_fortress1")
+		}
+	}
+}

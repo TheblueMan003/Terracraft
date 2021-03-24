@@ -1,0 +1,22 @@
+package generation
+
+def lazy genStructure(int y, function b){
+	@s.y = y
+	at(@s){
+		positioned(~ ~ ~-1){
+			b()
+		}
+	}
+}
+
+def lazy genStronghold(){
+	int y = Random.Range(0,40)
+	@s.y = y
+	at(@s){
+		positioned(~ ~ ~-1){
+			structure("stronghold")
+			fill(~ ~ ~1 ~27 ~9 ~ structure_void keep)
+		}
+	}
+}
+

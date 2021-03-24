@@ -1,0 +1,29 @@
+package generation
+
+def genDecoFlowerForest(){
+	int rand = random.range(0,20)
+	if (rand > 10){
+		setblock(~ ~ ~ grass keep)
+	}
+	if (rand == 1){
+		setblock(~ ~ ~ poppy keep)
+	}
+	if (rand == 2){
+		setblock(~ ~ ~ white_tulip keep)
+	}
+	if (rand == 3){
+		setblock(~ ~ ~ pink_tulip keep)
+	}
+	if (rand == 4){
+		setblock(~ ~ ~ orange_tulip keep)
+	}
+	if (rand == 5){
+		setblock(~ ~ ~ red_tulip keep)
+	}
+	if (rand == 6){
+		setblock(~ ~ ~ lily_of_the_valley keep)
+	}
+	if (rand == 7){
+		setblock(~ ~ ~ allium keep)
+	}
+}

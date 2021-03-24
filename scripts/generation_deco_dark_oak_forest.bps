@@ -1,0 +1,28 @@
+package generation
+
+package generation
+
+def genDecoDarkOakForest(){
+	int rand = random.range(0,20)
+	if (rand > 10){
+		setblock(~ ~ ~ grass keep)
+	}
+	if (rand == 1){
+		setblock(~ ~ ~ minecraft:rose_bush[half=lower] keep)
+		setblock(~ ~1 ~ minecraft:rose_bush[half=upper] keep)
+	}
+	if (rand == 2){
+		setblock(~ ~ ~ minecraft:peony[half=lower] keep)
+		setblock(~ ~1 ~ minecraft:peony[half=upper] keep)
+	}
+	if (rand == 3){
+		tree_dark_oak()
+	}
+	if (rand == 4){
+		tree_dark_oak()
+	}
+	if (rand == 5){
+		tree_oak()
+	}
+}
+

@@ -1,0 +1,128 @@
+package generation
+
+int coverY
+blocktags ground_replace{
+	stone,
+	air,
+	netherrack,
+	granite,
+	andesite,
+	diorite,
+	gravel
+}
+def genCoverGrass(){
+	int yb = coverY
+	int yt = coverY
+	yb -= 4
+	
+	@s.y = yt
+	at(@s){
+		fill(~ ~ ~ ~ ~ ~-1 grass_block replace #empty)
+	}
+	yt -= 1
+	for(int i = yt;i > yb;i--){
+		@s.y = i
+		at(@s){
+			fill(~ ~ ~ ~ ~ ~-1 dirt replace #ground_replace)
+		}
+	}
+}
+
+def genCoverSand(){
+	int yb = coverY
+	int yt = coverY
+	yb -= 4
+
+	for(int i = yt;i > yb;i--){
+		@s.y = i
+		at(@s){
+			fill(~ ~ ~ ~ ~ ~-1 sand replace #ground_replace)
+		}
+	}
+
+	yt -= 4
+	yb -= 4
+	for(int i = yt;i > yb;i--){
+		@s.y = i
+		at(@s){
+			fill(~ ~ ~ ~ ~ ~-1 sandstone replace #ground_replace)
+		}
+	}
+}
+
+def genCoverSnow(){
+	int yb = coverY
+	int yt = coverY
+	yb -= 4
+	
+	@s.y = yt
+	at(@s){
+		fill(~ ~ ~ ~ ~ ~-1 grass_block replace #empty)
+	}
+	at(@s){
+		fill(~ ~1 ~ ~ ~1 ~-1 snow replace #empty)
+	}
+	yt -= 1
+	for(int i = yt;i > yb;i--){
+		@s.y = i
+		at(@s){
+			fill(~ ~ ~ ~ ~ ~-1 dirt replace #ground_replace)
+		}
+	}
+}
+
+def genCoverCrimsonNylium(){
+	@s.y = coverY
+	at(@s){
+		fill(~ ~ ~ ~ ~ ~-1 crimson_nylium replace #empty)
+	}
+}
+
+def genCoverWarpedNylium(){
+	@s.y = coverY
+	at(@s){
+		fill(~ ~ ~ ~ ~ ~-1 warped_nylium replace #empty)
+	}
+}
+
+def genCoverSoulSandValley(){
+	int yb = coverY
+	int yt = coverY
+	yb -= 4
+	
+	@s.y = yt
+	at(@s){
+		fill(~ ~ ~ ~ ~ ~-1 soul_sand replace #empty)
+	}
+	yt -= 1
+	for(int i = yt;i > yb;i--){
+		@s.y = i
+		at(@s){
+			fill(~ ~ ~ ~ ~ ~-1 soul_soil replace #ground_replace)
+		}
+	}
+}
+
+def genCoverBasaltDelta(){
+	int yb = coverY
+	int yt = coverY
+	yb -= 4
+	
+	@s.y = yt
+	at(@s){
+		fill(~ ~ ~ ~ ~ ~-1 basalt replace #empty)
+	}
+	yt -= 1
+	for(int i = yt;i > yb;i--){
+		@s.y = i
+		at(@s){
+			fill(~ ~ ~ ~ ~ ~-1 basalt replace #ground_replace)
+		}
+	}
+
+}
+
+def lazy genCover(int y, function b){
+	coverY = y
+	b()
+}

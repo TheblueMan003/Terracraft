@@ -1,0 +1,65 @@
+using generation as gen
+package biome
+
+biome.biomeIndex = 0
+biome plains = biome(62, 70, 0, 0, 4, 6, 50, 70, gen.genCoverGrass, gen.genDecoPlain, gen.genMobPlain,gen.plainStruct)
+biome forest = biome(65, 75, 0, 0,2, 3, 50, 70, gen.genCoverGrass, gen.genDecoForest, gen.genMobForest,gen.void)
+biome birchForest = biome(65, 75, 0, 0,2, 3, 50, 70, gen.genCoverGrass, gen.genDecoBirchForest, gen.genMobForest,gen.void)
+biome taiga = biome(60, 70, 0, 0,4, 6, 50, 70, gen.genCoverGrass, gen.genDecoTaiga, gen.genMobTaiga,gen.void)
+biome flowerForest = biome(63, 70, 0, 0,4, 6, 30, 50, gen.genCoverGrass, gen.genDecoFlowerForest, gen.genMobForest,gen.void)
+biome sunFlower = biome(63, 70, 0, 0,4, 6, 30, 60, gen.genCoverGrass, gen.genDecoSunFlower, gen.genMobPlain,gen.void)
+biome darkOakForest = biome(63, 70, 0, 0,4, 6, 50, 70, gen.genCoverGrass, gen.genDecoDarkOakForest, gen.genMobForest,gen.void)
+biome jungle = biome(63, 70, 0, 0,4, 6, 50, 70, gen.genCoverGrass, gen.genDecoJungle, gen.genMobJungle,gen.void)
+biome savana = biome(80, 83, 0, 0,4, 6, 50, 70, gen.genCoverGrass,gen.genDecoSavana, gen.genMobForest,gen.void)
+biome swamp = biome(60, 65, 0, 0,4, 6, 50, 70, gen.genCoverGrass, gen.genDecoForest, gen.genMobForest,gen.void)
+biome desert = biome(63, 75, 0, 0,4, 6, 80, 100, gen.genCoverSand, gen.genDecoDesert, gen.genMobDesert,gen.desertStruct)
+biome snowPlains = biome(63, 70, 0, 0,4, 6, 60, 90, gen.genCoverSnow, gen.genDecoPlain, gen.genMobSnow,gen.snowStruct)
+biome snowTaiga = biome(63, 70, 0, 0, 4, 6, 60, 90, gen.genCoverSnow, gen.genDecoTaiga, gen.genMobSnow,gen.void)
+biome mountain = biome(80, 85, 0, 0,4, 6, 60, 90, gen.genCoverSnow, gen.genDecoPlain, gen.genMobMountain,gen.void)
+
+biome.biomeIndex = 100
+biome crimsonForest = biome(60, 75, 87, 100,4, 6, 60, 90, gen.genCoverCrimsonNylium, gen.genDecoCrimson, gen.genMobCrimson,gen.netherStruct)
+biome warpedForest = biome(60, 75, 87, 100,4, 6, 60, 90, gen.genCoverWarpedNylium, gen.genDecoWarped, gen.genMobWarped,gen.netherStruct)
+biome soulSandValley = biome(60, 75, 87, 100,4, 6, 60, 90, gen.genCoverSoulSandValley, gen.void, gen.genMobSoulSandValley,gen.netherStruct)
+biome basaltDelta = biome(60, 75, 87, 100, 0, 1, 60, 90, gen.genCoverBasaltDelta, gen.void, gen.genMobBasaltDelta,gen.netherStruct)
+
+biome.biomeIndex = 200
+biome endMiddle = biome(90, 100, 80, 85, 0, 1, 60, 90, null, gen.genDecoEndCenter, gen.genMobWarped,gen.void)
+biome endRing = biome(80, 85, 90, 100, 0, 1, 60, 90, null, null, gen.void,gen.void)
+biome endIsland = biome(90, 100, 80, 85, 0, 1, 60, 90, null, gen.genDecoEnd, gen.genMobWarped,gen.void)
+
+def lazy getBiome(int index):biome{
+	switch(index){
+		0 -> return(plains)
+		1 -> return(forest)
+		2 -> return(birchForest)
+		3 -> return(taiga)
+		4 -> return(flowerForest)
+		5 -> return(sunFlower)
+		6 -> return(darkOakForest)
+		7 -> return(jungle)
+		8 -> return(savana)
+		9 -> return(swamp)
+		10 -> return(desert)
+		11 -> return(snowPlains)
+		12 -> return(snowTaiga)
+		13 -> return(mountain)
+	}
+}
+
+def lazy getBiomeNether(int index):biome{
+	switch(index){
+		0 -> return(crimsonForest)
+		1 -> return(warpedForest)
+		2 -> return(soulSandValley)
+		3 -> return(basaltDelta)
+	}
+}
+
+def lazy getBiomeEnd(int index):biome{
+	switch(index){
+		0 -> return(endMiddle)
+		1 -> return(endRing)
+		2.. -> return(endIsland)
+	}
+}

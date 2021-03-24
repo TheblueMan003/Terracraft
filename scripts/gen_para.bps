@@ -1,0 +1,84 @@
+package generation
+
+struct gen_para{
+	int x, y, z
+	biome currBiome
+	int biomeTime
+	int flat
+	int yroof
+	int roof_flat
+	int direction
+	int biome_index
+	GenType gen
+	
+	def changeBiome(){
+		if (gen == Overworld){
+			currBiome = biome.getBiome(random.range(0, 14))
+			biomeTime = random.range(currBiome.minSize, currBiome.maxSize)
+		}
+		if (gen == Nether){
+			currBiome= biome.getBiomeNether(random.range(0, 5))
+			biomeTime = random.range(currBiome.minSize, currBiome.maxSize)
+		}
+		if (gen == End){
+			biome_index ++
+			currBiome= biome.getBiomeEnd(biome_index)
+			biomeTime = random.range(currBiome.minSize, currBiome.maxSize)
+		}
+	}
+
+	def __init__(int x, int y, int y2, int z, biome b, int direction, GenType gen = Overworld){
+		this.x = x
+		this.y = y
+		this.z = z
+		this.currBiome = b
+		this.biomeTime = -100
+		this.flat = 2
+		this.roof_flat = 2
+		this.yroof = y2
+		this.direction = direction
+		this.gen = gen
+		this.biome_index = -1
+		changeBiome()
+	}
+	
+	def evolve(){
+		flat -= 1
+		roof_flat -= 1
+		biomeTime -= 1
+		
+		if (biomeTime < 0){
+			changeBiome()
+		}
+		
+		if (flat < 0){
+			flat = random.range(currBiome.minFlat, currBiome.maxFlat)
+			int dif = random.range(0, 5)
+			dif -= 2
+			y += dif
+		}
+		if (y < currBiome.minHeight){
+			y += 1
+		}
+		if (y > currBiome.maxHeight){
+			y -= 1
+		}
+		
+		if (roof_flat < 0){
+			roof_flat = random.range(currBiome.minFlat, currBiome.maxFlat)
+			int dif = random.range(0, 5)
+			dif -= 2
+			yroof += dif
+		}
+		
+		if (yroof  < currBiome.minRoof){
+			yroof   += 1
+		}
+		if (yroof  > currBiome.maxRoof){
+			yroof  -= 1
+		}
+		
+		
+		x += direction 
+	}
+}

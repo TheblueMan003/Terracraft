@@ -1,0 +1,74 @@
+package player
+
+enum eye_stat = Left, Right, LeftNear, RightNear
+EYE_STAT Estat
+INT EyeTime
+INT EyeCraft = minecraft.crafted:minecraft.ender_eye
+
+def summon_eye_of_ender(){
+	/summon armor_stand ~ ~-1.75 ~ {Invisible:1b,NoGravity:1b,ArmorItems:[{},{},{},{id:"ender_eye",Count:1b}],HandItems:[{},{}],Tags:["eye_of_ender","init_eye"],Rotation:[90f,90f],Marker:1}
+	with(@e[tag=init_eye]){
+		untag(init_eye)
+		int x = @s.x
+		int ax = math.abs(x - generation.strongold_x)
+		if (ax < 10){
+			if (x > generation.strongold_x){
+				Estat = LeftNear
+			}
+			if (x < generation.strongold_x){
+				Estat = RightNear
+			}
+		}
+		else{
+			if (x > generation.strongold_x){
+				Estat = Left
+			}
+			if (x < generation.strongold_x){
+				Estat = Right
+			}
+		}
+	}
+}
+def eye_of_ender(){
+		with(@e[type=item,tag=!tagged,nbt={Item:{id:"minecraft:ender_eye",Count: 1b}}],true){
+		summon_eye_of_ender()
+		kill()
+	}
+	with(@a,true){
+		if(EyeCraft > 0){
+			EyeCraft = 0
+			tellraw(@a,"Tip: ",("Drop the eyes to use them!",yellow))
+		}
+	}
+	with(@e[tag=eye_of_ender],true){
+		effect(give, @s, glowing, 10, 0, true)
+		EyeTime++
+		/particle minecraft:portal ~ ~ ~ 0 0 0 1 1 force @a 
+		if (EyeTime < 80){
+			switch(Estat){
+				Right -> /tp @s ~0.1 ~0.05 ~ 90 0
+				Left -> /tp @s ~-0.1 ~0.05 ~ 90 0
+				RightNear -> /tp @s ~0.1 ~-0.05 ~ 90 0
+				LeftNear -> /tp @s ~-0.1 ~-0.05 ~ 90 0
+			}
+		}
+		if (EyeTime > 100){
+			/summon item ~ ~ ~ {Item: {id: "ender_eye",Count: 1},Tags:["tagged"]}
+			kill(@s)
+		}
+	}
+}
+def portalCreate(){
+	/setblock ~1 ~1 ~ minecraft:end_gateway{Age:180,ExactTeleport:1,ExitPortal:{X:76,Y:107,Z:0}} replace
+	/setblock ~2 ~1 ~ minecraft:end_gateway{Age:180,ExactTeleport:1,ExitPortal:{X:76,Y:107,Z:0}} replace
+	/setblock ~3 ~1 ~ minecraft:end_gateway{Age:180,ExactTeleport:1,ExitPortal:{X:76,Y:7107,Z:0}} replace
+}
+def ticking portal(){
+	with(@e[tag=end_portal],true){
+		if (block(~ ~1 ~ minecraft:end_portal_frame[eye=true]) && block(~1 ~1 ~1 minecraft:end_portal_frame[eye=true]) && block(~2 ~1 ~1 minecraft:end_portal_frame[eye=true]) && block(~3 ~1 ~1 minecraft:end_portal_frame[eye=true]) && block(~4 ~1 ~0 minecraft:end_portal_frame[eye=true])){
+			portalCreate()
+			/playsound minecraft:block.end_portal.spawn master @a ~ ~ ~ 1000 1
+			kill(@s)	
+		}
+	}
+}

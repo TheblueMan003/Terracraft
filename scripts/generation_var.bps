@@ -1,0 +1,46 @@
+package generation
+
+//gen_para dummy
+gen_para overworld_left
+gen_para overworld_right
+
+gen_para nether_left
+gen_para nether_right
+
+gen_para end_left
+gen_para end_right
+
+int strongold_x
+
+def load(){
+	overworld_left = gen_para(0, 70, 60, -2000, biome.plains, -1, Overworld)
+	overworld_right = gen_para(1, 70, 60, -2000, biome.plains, 1, Overworld)
+	
+	nether_left = gen_para(0, 70, 90, -1000, biome.crimsonForest, -1, Nether)
+	nether_right = gen_para(1, 70, 90, -1000,biome.crimsonForest, 1, Nether)
+	
+	end_left = gen_para(0, 90, 80, 0, biome.endMiddle, -1, End)
+	end_right = gen_para(1, 90, 80, 0,biome.endMiddle, 1, End)
+	
+	strongold_x = Random.Range(200,1000)
+	int j = Random.Range(0,2)
+	if (j==1){
+		strongold_x *= -1	
+	}
+
+	dragonDefeat = false
+}
+def locateStronghold(){
+	tellraw(@a,"Stronghold located at ",strongold_x)
+}
+bool wasLoaded
+bool hasLoaded = false
+if (wasLoaded){
+	hasLoaded = true	
+}
+if (!hasLoaded){
+	/fill 24 3 24 -8 3 -8 air
+	wasLoaded = true
+	load()	
+}
+int slop = 2

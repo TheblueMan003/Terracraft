@@ -1,0 +1,53 @@
+package generation
+
+def genCaveBlob(int size){
+	fill(~2 ~ ~ ~ ~2 ~ structure_void)
+
+	if (size > 0){
+		int branch = random.range(4, 12) 
+		branch /= 4
+
+		for(int i = 0;i<branch;i++){
+			int rand = random.range(0, 7)
+
+			if (rand <= 1){
+				positioned(~1 ~ ~){
+					genCaveBlob(size-1)
+				}
+			}
+			if (rand >= 2 && rand <= 3){
+				positioned(~-2 ~ ~){
+					genCaveBlob(size-1)
+				}
+			}
+			if (rand == 4){
+				positioned(~ ~2 ~){
+					genCaveBlob(size-1)
+				}
+			}
+			if (rand == 5){
+				positioned(~1 ~1 ~){
+					genCaveBlob(size-1)
+				}
+			}
+			if (rand == 6){
+				positioned(~-2 ~1 ~){
+					genCaveBlob(size-1)
+				}
+			}
+		}
+	}
+}
+
+
+def lazy genCave(int y){
+	int rand = random.range(0, 15) 
+	if(rand == 0){
+		int y2 = random.range(1, y)
+
+		@s.y = y2
+		at(@s){
+			genCaveBlob(random.range(15, 25))
+		}
+	}
+}

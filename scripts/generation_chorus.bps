@@ -1,0 +1,50 @@
+package generation
+
+def genChorus(){
+	int size = Random.Range(10,20)
+	int l = 0
+	def genChorusInter(){
+		if (l != 0){
+			l = 0
+			setblock(~ ~ ~ chorus_plant keep)
+			size --
+			positioned(~ ~1 ~){
+				genChorusInter()
+			}
+		}
+		else if (size <= 0){
+			setblock(~ ~ ~ chorus_plant keep)
+			setblock(~ ~1 ~ chorus_flower keep)
+		}
+		else if (size > 0){
+			setblock(~ ~ ~ chorus_plant keep)
+			size --
+			switch(Random.Range(0,3)){
+				case(0){
+					positioned(~ ~1 ~){
+						genChorusInter()
+					}
+				}
+				case(1){
+					if (size > 0){
+						l = 1
+						setblock(~-1 ~ ~ chorus_plant keep)
+						positioned(~-1 ~1 ~){
+							genChorusInter()
+						}
+					}
+				}
+				case(2){
+					if (size > 0){
+						l = 1
+						setblock(~1 ~ ~ chorus_plant keep)
+						positioned(~1 ~1 ~){
+							genChorusInter()
+						}
+					}
+				}
+			}
+		}
+	}
+	genChorusInter()
+}

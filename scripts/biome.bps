@@ -1,0 +1,36 @@
+package biome
+
+int biomeIndex = 0
+
+struct biome{
+	int minHeight
+	int maxHeight
+	int minRoof
+	int maxRoof
+	int minFlat
+	int maxFlat
+	int minSize
+	int maxSize
+	int index
+	function cover
+	function decorator
+	function mobSpawn
+	function structures
+			
+	def lazy __init__(int h1, int h2, int r1, int r2, int f1, int f2, int s1, int s2, function<(int)> c, function d, function m, function str){
+		this.minHeight = h1
+		this.maxHeight = h2
+		this.minRoof = r1
+		this.maxRoof = r2
+		this.minFlat = f1
+		this.maxFlat = f2
+		this.minSize = s1
+		this.maxSize = s2
+		this.cover = c
+		this.decorator = d
+		this.mobSpawn = m
+		this.structures = str
+		this.index = biomeIndex
+		biomeIndex ++
+	}
+}

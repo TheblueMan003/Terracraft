@@ -1,0 +1,28 @@
+package generation
+
+def storeBiome(int index){
+	positioned(~ 0 ~-2){
+		switch(index){
+			0 -> setblock(white_wool)
+			1 -> setblock(red_wool)
+			2 -> setblock(orange_wool)
+			3 -> setblock(yellow_wool)
+			4 -> setblock(lime_wool)
+			5 -> setblock(green_wool)
+			6 -> setblock(blue_wool)
+			7 -> setblock(cyan_wool)
+			8 -> setblock(light_blue_wool)
+			9 -> setblock(purple_wool)
+			10 -> setblock(magenta_wool)
+			11 -> setblock(pink_wool)
+			12 -> setblock(brown_wool)
+			13 -> setblock(black_wool)
+			14 -> setblock(light_gray_wool)
+			15 -> setblock(gray_wool)
+			100 -> setblock(white_stained_glass)
+			101 -> setblock(red_stained_glass)
+			102 -> setblock(orange_stained_glass)
+			103 -> setblock(yellow_stained_glass)
+		}
+	}
+}

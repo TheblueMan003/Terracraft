@@ -1,0 +1,8 @@
+package generation
+
+int sea_level = 63
+bool barrier = true
+
+def void(){
+
+}

@@ -1,0 +1,75 @@
+package generation
+
+def generate(gen_para para):bool{
+	bool succ = false
+	def genChunk(){
+		int x = @s.x
+		int z = @s.z
+
+		if (x == para.x && z == para.z){
+			genBase(para.y, para.yroof, para.gen)
+			genCover(para.y, para.currBiome.cover)
+			genCave(para.y)
+			genUndergroundStructure(para.y, para.gen)
+			genOre(para.y, para.currBiome, para.gen)
+			genDeco(para.y, para.currBiome.decorator)
+			genStructure(para.y,para.currBiome.structures)
+			genMob(para.y, para.currBiome.mobSpawn)
+			storeBiome(para.currBiome.index)
+			genDragon(x,para.gen)
+			if (x == strongold_x && para.z == -2000){
+				genStronghold()
+			}
+			succ = true
+		}
+	}
+	with(@p,true){
+		positioned(~ ~5 ~){
+			tools.locatedAs(para.x,0,para.z,genChunk)
+		}
+	}
+	
+	return(succ)
+}
+
+def overworld_generate_left(){
+	bool succ = generate(overworld_left)
+	if (succ){
+		overworld_left.evolve()
+	}
+}
+
+def overworld_generate_right(){
+	bool succ = generate(overworld_right)
+	if (succ){
+		overworld_right.evolve()
+	}
+}
+
+def nether_generate_left(){
+	bool succ = generate(nether_left)
+	if (succ){
+		nether_left.evolve()
+	}
+}
+
+def nether_generate_right(){
+	bool succ = generate(nether_right)
+	if (succ){
+		nether_right.evolve()
+	}
+}
+
+def end_generate_left(){
+	bool succ = generate(end_left)
+	if (succ){
+		end_left.evolve()
+	}
+}
+
+def end_generate_right(){
+	bool succ = generate(end_right)
+	if (succ){
+		end_right.evolve()
+	}
+}

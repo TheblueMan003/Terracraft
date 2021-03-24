@@ -1,0 +1,75 @@
+package generation
+
+def tree_oak(){
+	/fill ~-2 ~2 ~ ~2 ~3 ~-1 oak_leaves replace air
+	/fill ~-1 ~4 ~ ~1 ~5 ~-1 oak_leaves replace air
+	/fill ~ ~6 ~ ~ ~6 ~-1 oak_leaves replace air
+	/fill ~ ~ ~-1 ~ ~5 ~-1 oak_log
+}
+
+def tree_birch(){
+	/fill ~-2 ~2 ~ ~2 ~3 ~-1 birch_leaves replace air
+	/fill ~-1 ~4 ~ ~1 ~5 ~-1 birch_leaves replace air
+	/fill ~ ~6 ~ ~ ~6 ~-1 birch_leaves replace air
+	/fill ~ ~ ~-1 ~ ~4 ~-1 birch_log
+}
+
+def tree_spruce(){
+	/fill ~-2 ~2 ~ ~2 ~2 ~-1 spruce_leaves replace air
+	/fill ~-1 ~3 ~ ~1 ~3 ~-1 spruce_leaves replace air
+	/setblock ~ ~4 ~-1 spruce_leaves
+	/fill ~-2 ~5 ~ ~2 ~5 ~-1 spruce_leaves replace air
+	/fill ~-1 ~6 ~ ~1 ~6 ~-1 spruce_leaves replace air
+	/fill ~ ~7 ~ ~ ~7 ~-1 spruce_leaves replace air
+	/fill ~ ~ ~-1 ~ ~6 ~-1 spruce_log
+}
+
+def tree_jungle(){
+	/fill ~-3 ~17 ~ ~4 ~18 ~-1 jungle_leaves replace air
+	/fill ~-2 ~19 ~ ~3 ~20 ~-1 jungle_leaves replace air
+	/fill ~-1 ~21 ~ ~2 ~21 ~-1 jungle_leaves replace air
+	/fill ~ ~ ~-1 ~1 ~20 ~-1 jungle_log
+}
+
+def tree_dark_oak(){
+	/fill ~-3 ~4 ~ ~4 ~5 ~-1 dark_oak_leaves replace air
+	/fill ~-2 ~6 ~ ~3 ~7 ~-1 dark_oak_leaves replace air
+	/fill ~-1 ~8 ~ ~2 ~8 ~-1 dark_oak_leaves replace air
+	/fill ~ ~ ~-1 ~1 ~7 ~-1 dark_oak_log
+}
+def tree_acacia1(){
+	/fill ~ ~5 ~ ~5 ~6 ~-1 acacia_leaves replace air
+	/fill ~1 ~7 ~ ~4 ~8 ~-1 acacia_leaves replace air
+	/fill ~ ~ ~-1 ~ ~1 ~-1 acacia_log
+	/fill ~1 ~2 ~-1 ~1 ~3 ~-1 acacia_log
+	/fill ~2 ~4 ~-1 ~2 ~5 ~-1 acacia_log
+}
+def tree_acacia2(){
+	/fill ~-4 ~5 ~ ~1 ~6 ~-1 acacia_leaves replace air
+	/fill ~-3 ~7 ~ ~ ~8 ~-1 acacia_leaves replace air
+	/fill ~ ~ ~-1 ~ ~1 ~-1 acacia_log
+	/fill ~-1 ~2 ~-1 ~-1 ~3 ~-1 acacia_log
+	/fill ~-2 ~4 ~-1 ~-2 ~5 ~-1 acacia_log
+}
+
+def tree_crimson(){
+	/fill ~-2 ~2 ~ ~2 ~3 ~-1 nether_wart_block replace air
+	/fill ~-1 ~4 ~ ~1 ~5 ~-1 nether_wart_block replace air
+	/fill ~ ~6 ~ ~ ~6 ~-1 nether_wart_block replace air
+	/fill ~ ~ ~-1 ~ ~5 ~-1 crimson_stem
+}
+
+def tree_warped(){
+	/fill ~-2 ~2 ~ ~2 ~3 ~-1 warped_wart_block replace air
+	/fill ~-1 ~4 ~ ~1 ~5 ~-1 warped_wart_block replace air
+	/fill ~ ~6 ~ ~ ~6 ~-1 warped_wart_block replace air
+	/fill ~ ~ ~-1 ~ ~5 ~-1 warped_stem
+}
+
+def tree_acacia(){
+	int rand = random.range(0, 2)
+	switch(rand){
+		0 -> tree_acacia1()
+		1 -> tree_acacia2()
+	}
+}

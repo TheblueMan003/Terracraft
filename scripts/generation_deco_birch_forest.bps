@@ -1,0 +1,24 @@
+package generation
+
+def genDecoBirchForest(){
+	int rand = random.range(0,20)
+	if (rand > 10){
+		setblock(~ ~ ~ grass keep)
+	}
+	if (rand == 1){
+		tree_birch()		
+	}
+	if (rand == 2){
+		setblock(~ ~ ~ dandelion keep)
+	}
+	if (rand == 3){
+		setblock(~ ~ ~ oxeye_daisy keep)
+	}
+	if (rand == 4){
+		tree_birch()
+	}
+	if (rand == 5){
+		tree_birch()
+	}
+}
+

@@ -1,0 +1,82 @@
+package generation
+
+def genMobPlain(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		int rand = random.range(0, 6)
+		switch(rand){
+			0 -> /summon cow ~0.5 ~ ~
+			1 -> /summon sheep ~0.5 ~ ~
+			2 -> /summon chicken ~0.5 ~ ~
+			3 -> /summon pig ~0.5 ~ ~
+			4 -> /summon horse ~0.5 ~ ~
+			5 -> /summon donkey ~0.5 ~ ~
+		}
+	}
+}
+
+def genMobForest(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		int rand = random.range(0, 4)
+		switch(rand){
+			0 -> /summon cow ~0.5 ~ ~
+			1 -> /summon sheep ~0.5 ~ ~
+			2 -> /summon chicken ~0.5 ~ ~
+			3 -> /summon pig ~0.5 ~ ~
+		}
+	}
+}
+
+def genMobTaiga(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		int rand = random.range(0, 5)
+		switch(rand){
+			0 -> /summon cow ~0.5 ~ ~
+			1 -> /summon sheep ~0.5 ~ ~
+			2 -> /summon chicken ~0.5 ~ ~
+			3 -> /summon pig ~0.5 ~ ~
+			4 -> /summon fox ~0.5 ~ ~
+		}
+	}
+}
+
+def genMobMountain(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		int rand = random.range(0, 4)
+		switch(rand){
+			0 -> /summon cow ~0.5 ~ ~
+			1 -> /summon sheep ~0.5 ~ ~
+			2 -> /summon chicken ~0.5 ~ ~
+			3 -> /summon llama ~0.5 ~ ~
+		}
+	}
+}
+
+def genMobSnow(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		int rand = random.range(0, 4)
+		switch(rand){
+			0 -> /summon cow ~0.5 ~ ~
+			1 -> /summon sheep ~0.5 ~ ~
+			2 -> /summon chicken ~0.5 ~ ~
+			3 -> /summon polar_bear ~0.5 ~ ~
+		}
+	}
+}
+
+def genMobJungle(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		int rand = random.range(0, 4)
+		switch(rand){
+			0 -> /summon ocelot ~0.5 ~ ~
+			1 -> /summon panda ~0.5 ~ ~
+			2 -> /summon chicken ~0.5 ~ ~
+			3 -> /summon parrot ~0.5 ~ ~
+		}
+	}
+}

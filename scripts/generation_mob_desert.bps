@@ -1,0 +1,44 @@
+package generation
+
+def genMobDesert(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		/summon rabbit ~0.5 ~ ~
+	}
+}
+
+def genMobCrimson(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		int rand = random.range(0, 3)
+		switch(rand){
+			0 -> /summon piglin ~0.5 ~ ~ {IsImmuneToZombification:1}
+			1 -> /summon hoglin ~0.5 ~ ~ {IsImmuneToZombification:1}
+			2 -> /summon zombified_piglin ~0.5 ~ ~
+		}
+	}
+}
+
+def genMobWarped(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		/summon enderman ~0.5 ~ ~
+	}
+}
+
+def genMobSoulSandValley(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		int rand = random.range(0, 1)
+		switch(rand){
+			0 -> /summon skeleton ~0.5 ~ ~
+		}
+	}
+}
+
+def genMobBasaltDelta(){
+	int rand = random.range(0, 30)
+	if (rand == 0){
+		/summon magma_cube ~0.5 ~ ~
+	}
+}

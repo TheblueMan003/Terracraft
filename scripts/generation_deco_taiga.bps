@@ -1,0 +1,23 @@
+package generation
+
+def genDecoTaiga(){
+	int rand = random.range(0,20)
+	if (rand > 10 && rand <15){
+		fill(~ ~ ~ ~ ~ ~ grass replace #ground_layer)
+	}
+	if (rand == 1){
+		tree_spruce()		
+	}
+	if (rand == 2){
+		fill(~ ~ ~ ~ ~ ~ sweet_berry_bush replace #ground_layer)
+	}
+	if (rand > 15){
+		fill(~ ~ ~ ~ ~ ~ fern replace #ground_layer)
+	}
+	if (rand == 4){
+		tree_spruce()
+	}
+	if (rand == 5){
+		tree_spruce()
+	}
+}

@@ -1,0 +1,12 @@
+using generation as gen
+
+
+//int c = random.range(0,10)
+//testunit.greaterThan(c,-1,"Random Works")
+	
+
+//testunit.greaterThan(gen.nether_left.yroof,gen.nether_left.y,"nether roof left")
+//testunit.greaterThan(gen.nether_right.yroof,gen.nether_right.y,"nether roof right")
+	
+//testunit.greaterThan(gen.end_left.y,gen.end_left.yroof,"end island top left")
+//testunit.greaterThan(gen.end_right.y,gen.end_right.yroof,"end island top right")

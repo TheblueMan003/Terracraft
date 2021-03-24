@@ -1,0 +1,40 @@
+package generation
+
+def lazy genUndergroundStructure(int y, GenType gen){
+	if (gen == Overworld){
+		int rand = random.range(0, 700)
+		int sy = random.range(0, y)
+		@s.y = sy
+		at(@s){
+			if (rand == 0){
+				fill(~ ~-1 ~ ~22 ~-1 ~ stone keep)
+				positioned(~ ~ ~-1){
+					structure("mineshaft_1")
+				}
+				fill(~ ~ ~ ~22 ~3 ~ structure_void keep)
+			}
+			if (rand == 1){
+				positioned(~ ~ ~-1){
+					structure("skeleton_spawner")
+				}
+				fill(~ ~ ~ ~9 ~7 ~ structure_void keep)
+			}
+			if (rand == 2){
+				positioned(~ ~ ~-1){
+					structure("zombie_spawner")
+				}
+				fill(~ ~ ~ ~9 ~7 ~ structure_void keep)
+			}
+			if (rand >2 && rand < 50 && sy < 30){
+				positioned(~ ~ ~-1){
+					structure("lava_lake_1")
+				}
+			}
+			if (rand >50 && rand < 100 && sy >= 25 && sy < 65){
+				positioned(~ ~ ~-1){
+					structure("water_lake_1")
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,51 @@
+package hub
+
+def createHub(){
+	/forceload add -7 993 7 1007
+	positioned(-7 60 993){
+		structure("spawn")
+	}
+	/setworldspawn 0 61 1000
+	/tp @a 0 61 1000
+	gamerule(commandBlockOutput, false)
+	gamerule(doDaylightCycle, false)
+	gamerule(doWeatherCycle, false)
+	/gamemode adventure @a
+	/time set 6000
+	/setblock 0 61 1006 minecraft:diamond_block
+	/setblock 0 61 1005 minecraft:stone_button[face=wall,facing=north,powered=false]
+	/setblock -4 61 1005 minecraft:gold_block
+	/setblock -4 61 1004 minecraft:stone_button[face=wall,facing=north,powered=false]
+	/setblock -4 62 1005 minecraft:player_head[rotation=0]{SkullOwner:{Id:[I;356124168,1183928132,-2129165978,-1124639305],Properties:{textures:[{Signature:"hOiJ3wpQqXwSx43T8BhP3X8O30dQcinla9KiENzYeSb92tCMIXdoW64DM+WcmZp7aL/judp6PHLpgyPkGzbLilhJnVyPjrOKiJD4y1bzP27sIHJZ2L2g8lpqZFPsrWEzEcdnvo2iqXCJOTSZ4zzMlXrJyGnPYS2Dz1z1MLXl+9B7ktmpT2zPAQlJK1NV/nAHOPCa28KJUM8TApS2uhfr9eqHfdh4sx+xFAdYgGlwBNODI0Q8YfAbTeKIB/TsJHYAq20bazpSTSnJqN1C2lGZS6u5CFDBBZZGE0RLavuRrGR+seay4GqKOQCobeG81FdxdS9O3ZAD21rHbw0miA+Uafc24izHZz6V2jDqBf2vRKojcY3RIqNbiF626MqJlGIItLDScunEIdrHJYOpZmMpbz50h5RG/0mUa0jFzXTbwMra5VnIOHf9az4PZBF7LqgaUEr1TSi8p0rjnRUeo70evh3Wb0If81ttmKWy1WSU4LB7Cdn9D4yGbQat65SJ+9o/P+mIEJe1Q0g6wj6956f+MimQ1lLq28Yr0xGhdjEsroHxDRY91L3FGNxKAzXw6yuMMQ86NU9zS0dIa5NgSipK5Ms9zWtCabVBACPZ1SCIBhhUKC7rH8hXCx3Q9f/wPgQTbXECY5jEKODBXLjIx8bYzj11ya4vgsRgLGDi8qpsKSA=",Value:"ewogICJ0aW1lc3RhbXAiIDogMTU5MTM1OTIyOTA3MiwKICAicHJvZmlsZUlkIiA6ICIxNTNhMDYwODQ2OTE0ZjQ0ODExNzgxNjZiY2Y3NWRiNyIsCiAgInByb2ZpbGVOYW1lIiA6ICJNSEZfWW91VHViZSIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS81NTQ2OTFjYmZiYjBkNzY3ODBjZTRkMmE1MjZmZDdkOTAzMzU5ZGFhMDEyODk2ZDAzMTJhZGFjNzMyZjcyYjg1IiwKICAgICAgIm1ldGFkYXRhIiA6IHsKICAgICAgICAibW9kZWwiIDogInNsaW0iCiAgICAgIH0KICAgIH0KICB9Cn0="}]},Name:"MHF_YouTube"}}
+	/summon minecraft:armor_stand -3.56 62.83 1005.57 {NoGravity: 1b, Brain: {memories: {}}, HurtByTimestamp: 0, Attributes: [{Base: 0.699999988079071d, Name: "minecraft:generic.movement_speed"}], Invulnerable: 1b, FallFlying: 0b, ShowArms: 1b, PortalCooldown: 0, AbsorptionAmount: 0.0f, FallDistance: 0.0f, DisabledSlots: 2039583, DeathTime: 0s, Pose: {}, Invisible: 1b, Motion: [0.0d, 0.0d, 0.0d], Small: 0b, Health: 20.0f, Air: 300s, OnGround: 1b, Rotation: [179.8463f, 90.0f], HandItems: [{}, {}], CustomName: '{"color":"blue","text":"TheblueMan003"}', Fire: 0s, ArmorItems: [{}, {}, {}, {id: "minecraft:egg", Count: 1b, tag: {CustomModelData: 1}}], NoBasePlate: 1b, HurtTime: 0s}
+	/summon minecraft:armor_stand 0 62.83 1006.57 {NoGravity: 1b, Brain: {memories: {}}, HurtByTimestamp: 0, Attributes: [{Base: 0.699999988079071d, Name: "minecraft:generic.movement_speed"}], Invulnerable: 1b, FallFlying: 0b, ShowArms: 1b, PortalCooldown: 0, AbsorptionAmount: 0.0f, FallDistance: 0.0f, DisabledSlots: 2039583, DeathTime: 0s, Pose: {}, Invisible: 1b, Motion: [0.0d, 0.0d, 0.0d], Small: 0b, Health: 20.0f, Air: 300s, OnGround: 1b, Rotation: [179.8463f, 90.0f], HandItems: [{}, {}], CustomName: '{"color":"blue","text":"TheblueMan003"}', Fire: 0s, ArmorItems: [{}, {}, {}, {id: "minecraft:coal", Count: 1b, tag: {CustomModelData: 1}}], NoBasePlate: 1b, HurtTime: 0s}
+	/setblock 4 61 1005 minecraft:gold_block
+	/setblock 4 61 1004 minecraft:stone_button[face=wall,facing=north,powered=false]
+	//setblock 0 62 1006 minecraft:oak_wall_sign[facing=north,waterlogged=false]{Color:"black",Text4:'{"color":"red","text":""}',Text3:'{"color":"red","text":""}',Text2:'{"text":"[ Start ]","color":"green"}',Text1:'{"color":"green","clickEvent":{"action":"run_command","value":"function terraria:generation/startwithoutpreview"},"text":""}'}
+	//setblock -2 62 1006 minecraft:oak_wall_sign[facing=north,waterlogged=false]{Color:"black",Text4:'{"color":"aqua","text":"Preview : ON"}',Text3:'{"color":"aqua","text":"Generation"}',Text2:'{"text":""}',Text1:'{"color":"green","clickEvent":{"action":"run_command","value":"function terraria:generation/startwithpreview"},"text":"[ Start ]"}'}
+}
+def ticking hubmain(){
+	if (block(-4 61 1004 minecraft:stone_button[face=wall,facing=north,powered=true])){
+		/setblock -4 61 1004 minecraft:stone_button[face=wall,facing=north,powered=false]
+		tellraw(@a,("Map Made By ",yellow),("TheblueMan003",gold))
+		tellraw(@a,("   You",white,"https://www.youtube.com/channel/UCIcGrc1e1Y4UNSqJCfyufkA"),("tube",red,"https://www.youtube.com/channel/UCIcGrc1e1Y4UNSqJCfyufkA"))
+		tellraw(@a,("   PlanetMinecraft  ",aqua,"https://www.planetminecraft.com/member/theblueman003/"))
+	}
+	if (block(0 61 1005 minecraft:stone_button[face=wall,facing=north,powered=true])){
+		/setblock 0 61 1005 minecraft:air
+		generation.startwithoutpreview()
+	}
+	if (block(4 61 1004 minecraft:stone_button[face=wall,facing=north,powered=true])){
+		/setblock 4 61 1004 minecraft:stone_button[face=wall,facing=north,powered=false]
+		tellraw(@a,("Some of My Other Maps:",yellow))
+		tellraw(@a,("   Super Steve Bros",aqua,"https://www.planetminecraft.com/project/super-steve-bros-4833363/"))
+		tellraw(@a,("   Rewind Time",aqua,"https://www.planetminecraft.com/project/rewind-time/"))
+		tellraw(@a,("   Blockception Parkour 4",aqua,"https://www.planetminecraft.com/project/blockception-parkour-4/"))
+		tellraw(@a,("   The Legend of Alex",aqua,"https://www.planetminecraft.com/project/the-legend-of-alex-a-crafted-adventure/"))
+	}
+}
+def playerInit(){
+	with(@s[tag=!inGame]){
+		/tp @s 0 61 1000
+	}
+}

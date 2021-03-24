@@ -1,0 +1,25 @@
+package generation
+
+def genDecoSavana(){
+	int rand = random.range(0,20)
+	if (rand > 10){
+		setblock(~ ~ ~ grass keep)
+	}
+	if (rand == 2){
+		setblock(~ ~ ~ minecraft:tall_grass[half=lower] keep)
+		setblock(~ ~1 ~ minecraft:tall_grass[half=upper] keep)
+	}
+	if (rand == 3){
+		setblock(~ ~ ~ minecraft:tall_grass[half=lower] keep)
+		setblock(~ ~1 ~ minecraft:tall_grass[half=upper] keep)
+
+	}
+	if (rand == 4){
+		setblock(~ ~ ~ minecraft:tall_grass[half=lower] keep)
+		setblock(~ ~1 ~ minecraft:tall_grass[half=upper] keep)
+	}
+	if (rand == 5){
+		tree_acacia()
+	}
+}
+

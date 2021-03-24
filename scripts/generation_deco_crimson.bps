@@ -1,0 +1,17 @@
+package generation
+
+def genDecoCrimson(){
+	int rand = random.range(0,20)
+	if (rand > 10){
+		setblock(~ ~ ~ minecraft:crimson_roots keep)
+	}
+	if (rand == 2){
+		setblock(~ ~ ~ minecraft:crimson_fungus keep)
+	}
+	if (rand == 3){
+		setblock(~ ~ ~ minecraft:warped_fungus keep)
+	}
+	if (rand == 5){
+		tree_crimson()
+	}
+}

@@ -1,0 +1,113 @@
+package generation
+
+int step
+bool preview
+def startWithoutPreview(){
+	step = 1
+	load()
+	tellraw(@a,"",("Starting Pregeneration of Terrain ",green))
+	tellraw(@a,"",("Forceloading Overworld Terrain (Might take between 15 to 120 seconds)",yellow))
+	/forceload add -150 -1999 150 -2002
+	preview = false
+	//setblock 2 62 1006 minecraft:oak_wall_sign[facing=north,waterlogged=false]{Color:"black",Text4:'{"color":"red","text":"Preview : OFF"}',Text3:'{"color":"red","text":"Generation"}',Text2:'{"text":""}',Text1:'{"color":"red","text":"[ Started ]"}'}
+	//setblock -2 62 1006 minecraft:oak_wall_sign[facing=north,waterlogged=false]{Color:"black",Text4:'{"color":"aqua","text":"Preview : ON"}',Text3:'{"color":"aqua","text":"Generation"}',Text2:'{"text":""}',Text1:'{"color":"red","text":"[ Started ]"}'}
+}
+def startWithPreview(){
+	step = 1
+	load()
+	tellraw(@a,"",("Starting Pregeneration of Terrain ",green))
+	tellraw(@a,"",("Pregenerating Overworld Terrain: ",yellow),"0","/1000")
+	/forceload add -150 -1999 150 -2002
+	preview = true
+	/gamemode spectator @a
+}
+def ticking pregenMain(){
+	if (step == 1){
+		needOverworldLeft = false
+		needOverworldRight = false
+		
+		if(overworld_left.x > -150){
+			needOverworldLeft = true
+			genDelay = 2000
+		}
+		if(overworld_right.x < 150){
+			needOverworldRight = true
+			genDelay = 2000
+		}
+		if (preview){
+			/tp @a 0 42 -1940 180 0
+			/gamemode spectator @a
+		}
+		float percent = overworld_right.x / 150
+		tellraw(@a,"",("Pregenerating Overworld Terrain: ",yellow),percent,"/1000")
+		if (overworld_left.x <= -150 && overworld_right.x >= 150){
+			/forceload remove -150 -1999 150 -2002
+			step = 2
+			tellraw(@a,"",("Forceloading Nether (Might take between 15 to 120 seconds)",gold))
+			/forceload add -150 -999 150 -1002
+		}
+	}
+	else if (step == 2){
+		needNetherLeft = false
+		needNetherRight = false
+		
+		if(nether_left.x > -150){
+			needNetherLeft = true
+			genDelay = 2000
+		}
+		if(nether_right.x < 150){
+			needNetherRight = true
+			genDelay = 2000
+		}
+		if (preview){
+			/tp @a 0 42 -940 180 0
+			/gamemode spectator @a
+		}
+		float percent = nether_right.x / 150
+		tellraw(@a,"",("Pregenerating Nether Terrain: ",gold),percent,"/1000")
+		
+		if (nether_left.x <= -150 && nether_right.x >= 150){
+			/forceload remove -150 -999 150 -1002
+			step = 3
+			tellraw(@a,"",("Forceloading End (Might take between 15 to 120 seconds)",yellow))
+			/forceload add -150 -1 150 2
+		}
+	}
+	else if (step == 3){
+		needEndLeft = false
+		needEndRight = false
+		
+		if(end_left.x > -150){
+			needEndLeft = true
+			genDelay = 2000
+		}
+		if(end_right.x < 150){
+			needEndRight = true
+			genDelay = 2000
+		}
+		if (preview){
+			/tp @a 0 42 40 180 0
+		}
+		float percent = end_right.x / 150
+		tellraw(@a,"",("Pregenerating End Terrain: ",yellow),percent,"/1000")
+		if (end_left.x <= -150 && end_right.x >= 150){
+			fill(75 105 0 77 105 -1 bedrock)
+			/forceload remove -150 -1 150 2
+			step = 4
+			started = true
+			tellraw(@a,"",("Pregeneration Complitted!",green))
+		}
+	}
+	else if (step == 4){
+		with(@a[tag=!inGame]){
+			tag(inGame)
+			/tp @s 0 75 -2000
+			/setworldspawn 0 75 -2000
+			gamerule(keepInventory, false)
+			gamerule(doDaylightCycle, true)
+			gamerule(doWeatherCycle, true)
+			difficulty(2)
+			/gamemode survival @s
+		}
+	}
+}

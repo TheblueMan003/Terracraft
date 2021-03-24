@@ -1,0 +1,10 @@
+package main
+
+generation.main()
+player.netherPortal()
+player.eye_of_ender()
+mob.mobControll()
+mob.mobSpawner()
+maps.initMap(hub.createHub)
+with(@a){maps.initPlayer(hub.playerInit)}
+effect(give, @a[tag=!inGame], saturation, 10, 255, true)

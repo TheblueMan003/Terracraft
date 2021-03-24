@@ -1,0 +1,27 @@
+package generation
+
+def genDragon(int x, gentype dim){
+	if (dim == end && x == 0){
+		/summon ender_dragon 0 90 0 {DragonPhase:0}
+		fill(-2 90 0 2 90 -1 bedrock)
+		fill(-3 91 0 -3 91 -1 bedrock)
+		fill(3 91 0 3 91 -1 bedrock)
+		fill(0 91 0 0 93 0 bedrock)
+	}
+}
+bool dragonDefeat
+def ticking enderdragon_tick(){
+	with(@a){
+		int x = @s.x
+		int z = @s.z
+
+		if (z == -10..10 && x == -100..100){
+			int c = tools.count(@e[type=ender_dragon])
+			if (!dragonDefeat && c == 0){
+				/fill -2 91 0 2 91 -1 minecraft:end_gateway{Age:180,ExactTeleport:1,ExitPortal:{X:0,Y:75,Z:-2000}}
+				dragonDefeat = true
+				tellraw(@a,("Congratulation You beat the game!",green))
+			}
+		}
+	}
+}

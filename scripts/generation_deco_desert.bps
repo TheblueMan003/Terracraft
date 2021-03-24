@@ -1,0 +1,35 @@
+package generation
+
+def genDecoDesert(){
+	int rand = random.range(0,15)
+	if (rand == 1){
+		setblock(~ ~ ~ cactus keep)
+	}
+	if (rand == 2){
+		setblock(~ ~ ~ dead_bush keep)
+	}
+}
+
+
+def genDecoEnd(){
+	int rand = random.range(0,20)
+	if (rand == 1){
+		genChorus()
+	}
+}
+
+def genDecoEndCenter(){
+	int rand = random.range(0,40)
+	if (rand == 1){
+		genChorus()
+	}
+	if (rand == 39){
+		positioned(~ ~-1 ~-1)
+		structure("end_pillar_1")
+	}
+	if (rand == 38){
+		positioned(~ ~-1 ~-1)
+		structure("end_pillar_2")
+	}
+}
+

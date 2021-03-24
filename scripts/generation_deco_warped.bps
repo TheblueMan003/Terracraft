@@ -1,0 +1,20 @@
+package generation
+
+def genDecoWarped(){
+	int rand = random.range(0,20)
+	if (rand > 10){
+		setblock(~ ~ ~ minecraft:warped_roots keep)
+	}
+	if (rand == 2){
+		setblock(~ ~ ~ minecraft:crimson_fungus keep)
+	}
+	if (rand == 3){
+		setblock(~ ~ ~ minecraft:warped_fungus keep)
+	}
+	if (rand == 4){
+		setblock(~ ~ ~ minecraft:nether_sprouts keep)
+	}
+	if (rand == 5){
+		tree_warped()
+	}
+}

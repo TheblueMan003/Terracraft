@@ -1,0 +1,9 @@
+package generation
+
+def genDeco(int y, function b){
+	y += 1
+	@s.y = y
+	at(@s){
+		b()		
+	}
+}

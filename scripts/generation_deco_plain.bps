@@ -1,0 +1,26 @@
+package generation
+blocktags ground_layer{
+	air,
+	snow	
+}
+def genDecoPlain(){
+	int rand = random.range(0,20)
+	if (rand > 10){
+		fill(~ ~ ~ ~ ~ ~ grass replace #ground_layer)
+	}
+	if (rand == 1){
+		fill(~ ~ ~ ~ ~ ~ poppy replace #ground_layer)
+	}
+	if (rand == 2){
+		fill(~ ~ ~ ~ ~ ~ dandelion replace #ground_layer)
+	}
+	if (rand == 3){
+		fill(~ ~ ~ ~ ~ ~ oxeye_daisy replace #ground_layer)
+	}
+	if (rand == 4){
+		fill(~ ~ ~ ~ ~ ~ azure_bluet replace #ground_layer)
+	}
+	if (rand == 5){
+		fill(~ ~ ~ ~ ~ ~ cornflower replace #ground_layer)
+	}
+}

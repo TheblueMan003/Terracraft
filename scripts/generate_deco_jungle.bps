@@ -1,0 +1,25 @@
+package generation
+
+def genDecoJungle(){
+	int rand = random.range(0,20)
+	
+	if (rand > 10){
+		setblock(~ ~ ~ grass keep)
+	}
+	if (rand == 1){
+		fill(~ ~ ~ ~ ~6 ~ bamboo keep)
+	}
+	if (rand == 2){
+		setblock(~ ~ ~ melon keep)
+	}
+	if (rand == 3){
+		tree_jungle()
+	}
+	if (rand == 4){
+		tree_jungle()
+	}
+	if (rand == 5){
+		tree_oak()
+	}
+	
+}
