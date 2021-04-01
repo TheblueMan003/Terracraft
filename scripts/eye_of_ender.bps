@@ -65,6 +65,21 @@ def portalCreate(){
 }
 def ticking portal(){
 	with(@e[tag=end_portal],true){
+		if (!block(~ ~1 ~ minecraft:end_portal_frame)){
+			setblock(~ ~1 ~ minecraft:end_portal_frame)
+		}
+		if (!block(~1 ~1 ~1 minecraft:end_portal_frame)){
+			setblock(~1 ~1 ~1 minecraft:end_portal_frame)
+		}
+		if (!block(~2 ~1 ~1 minecraft:end_portal_frame)){
+			setblock(~2 ~1 ~1 minecraft:end_portal_frame)	
+		}
+		if (!block(~3 ~1 ~1 minecraft:end_portal_frame)){
+			setblock(~3 ~1 ~1 minecraft:end_portal_frame)	
+		}
+		if (!block(~4 ~1 ~ minecraft:end_portal_frame)){
+			setblock(~4 ~1 ~ minecraft:end_portal_frame)
+		}
 		if (block(~ ~1 ~ minecraft:end_portal_frame[eye=true]) && block(~1 ~1 ~1 minecraft:end_portal_frame[eye=true]) && block(~2 ~1 ~1 minecraft:end_portal_frame[eye=true]) && block(~3 ~1 ~1 minecraft:end_portal_frame[eye=true]) && block(~4 ~1 ~0 minecraft:end_portal_frame[eye=true])){
 			portalCreate()
 			/playsound minecraft:block.end_portal.spawn master @a ~ ~ ~ 1000 1

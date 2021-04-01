@@ -4,3 +4,4 @@ import random
 import tools
 import testunit
 import maps
+import predicates.world

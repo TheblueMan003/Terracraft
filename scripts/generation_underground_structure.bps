@@ -16,12 +16,14 @@ def lazy genUndergroundStructure(int y, GenType gen){
 			if (rand == 1){
 				positioned(~ ~ ~-1){
 					structure("skeleton_spawner")
+					fill(~ ~ ~ ~9 ~7 ~1 cobblestone replace infested_cobblestone)
 				}
 				fill(~ ~ ~ ~9 ~7 ~ structure_void keep)
 			}
 			if (rand == 2){
 				positioned(~ ~ ~-1){
 					structure("zombie_spawner")
+					fill(~ ~ ~ ~9 ~7 ~1 cobblestone replace infested_cobblestone)
 				}
 				fill(~ ~ ~ ~9 ~7 ~ structure_void keep)
 			}

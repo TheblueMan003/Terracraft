@@ -32,28 +32,30 @@ def setPortal(){
 	}
 }
 def ticking mobspawn(){
-	int count = tools.count(@e[tag=tagged])
 	int time
 	cmdstore(time,time query daytime)
 	
-	if (count < 60 && time > 13000){
+	if (time > 13000){
 		with(@a,true){
-			int sx = @s.x
-			int sy = @s.y
-			int z = @s.z
-			int x = random.range(-60,60)+sx
-			int y = random.range(-60,60)+sy
-			int d = math.abs(x-sx)+math.abs(y-sy)
-			if (d > 10){
-				positioned(~ ~5 ~){
-					at(x,y,z){
-						if (block(~ ~ ~ air) && block(~ ~1 ~ air) && !block(~ ~-1 ~ air)){
-							switch(random.range(0,8)){
-								0..1 -> /summon zombie ~ ~ ~
-								2..3 -> /summon skeleton ~ ~ ~
-								4..5 -> /summon spider ~ ~ ~
-								5..6 -> /summon creeper ~ ~ ~
-								7 -> /summon enderman ~ ~ ~
+			int count = tools.count(@e[tag=tagged,distance=..60])
+			if (count < 60){
+				float sx = @s.x
+				float sy = @s.y
+				float z = @s.z
+				float x = random.range(-60,60)+sx
+				float y = random.range(-60,60)+sy
+				float d = math.abs(x-sx)+math.abs(y-sy)
+				if (d > 10){
+					positioned(~ ~5 ~){
+						at(x,y,z){
+							if (block(~ ~ ~ air) && block(~ ~1 ~ air) && !block(~ ~-1 ~ air) && world.lightRange(0,7)){
+								switch(random.range(0,8)){
+									0..1 -> /summon zombie ~ ~ ~
+									2..3 -> /summon skeleton ~ ~ ~
+									4..5 -> /summon spider ~ ~ ~
+									5..6 -> /summon creeper ~ ~ ~
+									7 -> /summon enderman ~ ~ ~
+								}
 							}
 						}
 					}
